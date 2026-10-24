@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Бізнес-пропозиція RTEM</title>
+<meta name="description" content="Розробка сайту та брендбуку для експерта з поліграфу, переговорів і медіації. RTEM Design Studio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#000;
+  --edge:linear-gradient(180deg,rgba(237,237,237,.26),rgba(237,237,237,.07) 45%,rgba(237,237,237,.05));
+  --edge-hover:linear-gradient(180deg,rgba(237,237,237,.5),rgba(237,237,237,.12) 45%,rgba(237,237,237,.08));
+  --edge-line:rgba(237,237,237,.16);
+  --edge-soft:rgba(237,237,237,.1);
+  --glass:rgba(228,229,242,.045);
+  --glass-2:rgba(228,229,242,.09);
+  --card:#030303;
+  --ink:#E4E5F2;
+  --text:rgba(228,229,242,.72);
+  --dim:rgba(228,229,242,.48);
+  --r:24px;
+  --r-big:32px;
+  --maxw:1200px;
+  --light:linear-gradient(180deg,#fff 0%,#EBEBEB 52%,#CCC 100%);
+  --sh-btn:0 2px 5px rgba(0,0,0,.2),0 10px 10px rgba(0,0,0,.17),0 22px 13px rgba(0,0,0,.1),0 40px 16px rgba(0,0,0,.03);
+  --sh-pane:-1px 4px 10px rgba(0,0,0,.15),-3px 18px 18px rgba(0,0,0,.13),-6px 40px 24px rgba(0,0,0,.08);
+  --ease:cubic-bezier(.22,.68,.21,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-weight:500;letter-spacing:-.04em;line-height:1.12}
+p{color:var(--text);font-size:17px;line-height:1.65}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+section{position:relative;padding:120px 0}
+@media(max-width:760px){section{padding:76px 0}body,p{font-size:16px}}
+:focus-visible{outline:2px solid #E4E5F2;outline-offset:3px;border-radius:6px}
+
+.grad{background:linear-gradient(142deg,#E4E5F2 38%,rgba(228,229,242,.34) 92%);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* фон */
+.glow{position:absolute;border-radius:50%;pointer-events:none;z-index:0;background:#E8E8E8;opacity:.07;filter:blur(100px)}
+.grid-bg{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(237,237,237,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(237,237,237,.05) 1px,transparent 1px);
+  background-size:76px 76px;
+  mask-image:radial-gradient(ellipse 78% 58% at 50% 0%,#000 18%,transparent 76%);
+  -webkit-mask-image:radial-gradient(ellipse 78% 58% at 50% 0%,#000 18%,transparent 76%)}
+
+/* hairline-обгортка */
+.pane{background:var(--edge);border-radius:var(--r);padding:1px;position:relative;
+  transition:background .5s var(--ease)}
+.pane>.in{background:radial-gradient(ellipse 130% 70% at 50% -12%,rgba(228,229,242,.07),transparent 62%),var(--card);
+  border-radius:calc(var(--r) - 1px);height:100%}
+.pane.wide{border-radius:var(--r-big);padding:6px}
+.pane.wide>.in{border-radius:calc(var(--r-big) - 6px);
+  background:radial-gradient(ellipse 110% 60% at 50% -8%,rgba(228,229,242,.06),transparent 60%),var(--card)}
+
+/* nav */
+header{position:fixed;top:18px;left:0;right:0;z-index:60;display:flex;justify-content:center;padding:0 24px}
+.navbar{width:100%;max-width:var(--maxw);height:64px;background:rgba(8,8,8,.86);
+  backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);border-radius:9999px;
+  padding:6px 6px 6px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  box-shadow:var(--sh-pane);outline:1px solid var(--edge-soft);outline-offset:-1px}
+.brand{display:flex;align-items:center;gap:11px;font-size:17px;font-weight:500;letter-spacing:-.02em;white-space:nowrap}
+.brand .mark{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--light);color:#000;font-size:16px;font-weight:600;flex-shrink:0}
+.nav-links{display:flex;gap:4px}
+.nav-links a{font-size:16px;color:var(--text);padding:9px 15px;border-radius:9999px;transition:color .3s var(--ease),background .3s var(--ease)}
+.nav-links a:hover{color:#fff;background:var(--glass)}
+@media(max-width:1020px){.nav-links{display:none}}
+@media(max-width:560px){.navbar{padding-left:18px;height:58px}}
+
+/* кнопки */
+.btn{display:inline-flex;align-items:center;gap:10px;border-radius:9999px;font-size:16px;font-weight:500;
+  letter-spacing:-.01em;cursor:pointer;white-space:nowrap;border:none;
+  transition:transform .45s var(--ease),filter .45s var(--ease),background .45s var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.btn-light{background:var(--light);color:#0A0A0A;padding:7px 7px 7px 20px;box-shadow:var(--sh-btn)}
+.btn-light:hover{filter:brightness(1.07)}
+.btn-glass{background:var(--glass);color:var(--ink);padding:7px 7px 7px 20px;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);outline:1px solid var(--edge-line);outline-offset:-1px}
+.btn-glass:hover{background:var(--glass-2)}
+.chip{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:15px;flex-shrink:0;transition:transform .45s var(--ease)}
+.btn-light .chip{background:#0A0A0A;color:#fff}
+.btn-glass .chip{background:var(--edge);color:var(--ink)}
+.btn:hover .chip{transform:rotate(-45deg)}
+.btn .label{display:inline-block;transition:transform .45s var(--ease)}
+.btn:hover .label{transform:translateX(2px)}
+
+/* eyebrow */
+.pill{display:inline-flex;align-items:center;gap:10px;padding:9px 18px;border-radius:9999px;
+  background:var(--glass);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
+  outline:1px solid var(--edge-line);outline-offset:-1px;font-size:16px;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--ink);font-weight:500}
+.pill .dot{width:8px;height:8px;border-radius:50%;background:#E4E5F2;box-shadow:0 0 0 3px rgba(228,229,242,.16);flex-shrink:0}
+
+/* квадратна іконка з фаскою */
+.ibox{width:58px;height:58px;border-radius:14px;display:grid;place-items:center;flex-shrink:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.012)),#060606;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 6px 16px rgba(0,0,0,.55);
+  outline:1px solid var(--edge-line);outline-offset:-1px}
+.ibox svg{width:24px;height:24px;stroke:#E4E5F2;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+
+/* hero */
+.hero{padding:190px 0 110px;text-align:center;overflow:hidden}
+.hero .glow.a{width:1000px;height:440px;top:-150px;left:50%;transform:translateX(-50%);opacity:.1;filter:blur(110px)}
+.hero .glow.b{width:600px;height:300px;top:330px;left:5%;opacity:.05;filter:blur(120px)}
+.hero-in{position:relative;z-index:2}
+h1{font-size:clamp(38px,5.2vw,68px);margin:30px auto 24px;max-width:17ch}
+.lead{max-width:650px;margin:0 auto;font-size:18px;color:var(--text)}
+.cta-row{display:flex;gap:12px;justify-content:center;margin-top:38px;flex-wrap:wrap}
+.hero-meta{margin-top:56px;font-size:16px;color:var(--dim)}
+.hero-visual{margin:64px auto 0;max-width:1000px}
+.hero-visual .in{height:330px;display:grid;place-items:center;overflow:hidden;position:relative}
+.rings{position:absolute;inset:0;display:grid;place-items:center}
+.ring{position:absolute;border:1px solid rgba(237,237,237,.09);border-radius:50%}
+.ring:nth-child(1){width:250px;height:250px;animation:spin 26s linear infinite}
+.ring:nth-child(2){width:410px;height:410px;animation:spin 36s linear infinite reverse}
+.ring:nth-child(3){width:590px;height:590px;animation:spin 50s linear infinite}
+.ring::after{content:'';position:absolute;top:-3px;left:50%;width:6px;height:6px;border-radius:50%;background:#E4E5F2;box-shadow:0 0 14px rgba(228,229,242,.85)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hv{position:relative;z-index:3;text-align:center}
+.hv .n{font-size:66px;font-weight:500;letter-spacing:-.05em;line-height:1}
+.hv .l{font-size:16px;color:var(--dim);margin-top:10px}
+.pulse{position:absolute;bottom:0;left:0;right:0;height:90px;opacity:.45;z-index:2}
+
+/* marquee */
+.mq-sec{padding:50px 0;position:relative}
+.mq-sec::before,.mq-sec::after{content:'';position:absolute;left:0;right:0;height:1px;background:var(--edge-soft)}
+.mq-sec::before{top:0}.mq-sec::after{bottom:0}
+.mq-label{text-align:center;font-size:16px;color:var(--dim);margin-bottom:28px}
+.mq{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent)}
+.mq-track{display:flex;gap:60px;width:max-content;animation:slide 36s linear infinite}
+.mq-track span{font-size:20px;color:rgba(228,229,242,.38);white-space:nowrap;letter-spacing:-.02em}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* заголовок секції */
+.sec-head{text-align:center;max-width:780px;margin:0 auto 56px}
+.sec-head h2{font-size:clamp(30px,3.6vw,48px);margin:22px 0 18px}
+.sec-head p{font-size:18px}
+
+/* сітки */
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:940px){.g3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){.g2,.g3{grid-template-columns:1fr}}
+
+/* КАРТКА З МЕДІА — текст знизу */
+.vcard{transition:background .5s var(--ease),transform .5s var(--ease)}
+.vcard:hover{background:var(--edge-hover);transform:translateY(-4px)}
+.vcard>.in{display:flex;flex-direction:column;overflow:hidden}
+.media{flex:1;min-height:300px;position:relative;display:grid;place-items:center;overflow:hidden;
+  background:radial-gradient(ellipse 62% 66% at 50% 42%,rgba(228,229,242,.1),transparent 66%)}
+.media::after{content:'';position:absolute;inset:0;
+  background-image:radial-gradient(rgba(237,237,237,.16) 1px,transparent 1px);background-size:15px 15px;
+  mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,#000,transparent 72%);
+  -webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,#000,transparent 72%);opacity:.55}
+.media svg{position:relative;z-index:2;width:72%;max-width:260px;height:auto}
+.vcard .meta{padding:0 30px 32px}
+.vcard h3{font-size:23px;margin-bottom:9px}
+.vcard p{font-size:16px}
+
+/* КАРТКА З ІКОНКОЮ — текст знизу */
+.icard{transition:background .5s var(--ease),transform .5s var(--ease)}
+.icard:hover{background:var(--edge-hover);transform:translateY(-4px)}
+.icard>.in{display:flex;flex-direction:column;min-height:310px;padding:30px;position:relative;overflow:hidden}
+.icard>.in::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .55s var(--ease);pointer-events:none;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(228,229,242,.1),transparent 65%)}
+.icard:hover>.in::before{opacity:1}
+.icard .meta{margin-top:auto;position:relative;z-index:1}
+.icard h3{font-size:22px;margin-bottom:9px}
+.icard p{font-size:16px}
+.icard .ibox{position:relative;z-index:1}
+.icard .num{position:absolute;top:34px;right:32px;font-size:16px;color:var(--dim);z-index:1}
+
+/* великий блок з візуалом зверху */
+.feature>.in{overflow:hidden}
+.feature .strip{height:260px;position:relative;border-radius:26px;overflow:hidden;margin-bottom:0;
+  background:radial-gradient(ellipse 90% 90% at 50% 0%,rgba(228,229,242,.08),transparent 62%),#040404}
+.feature .strip::after{content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(237,237,237,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(237,237,237,.07) 1px,transparent 1px);
+  background-size:52px 52px}
+.feature .strip svg{position:absolute;inset:0;margin:auto;width:min(70%,520px);height:auto;z-index:2}
+.feature .body{padding:44px}
+.feature h2{font-size:clamp(28px,3.2vw,40px);margin:20px 0 16px}
+.feature .cols{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 34px;margin-top:28px}
+@media(max-width:820px){.feature .cols{grid-template-columns:1fr}.feature .body{padding:30px}}
+
+/* чеклист */
+.check{display:flex;gap:14px;align-items:flex-start;font-size:16px;color:var(--text);line-height:1.6}
+.check b{color:var(--ink);font-weight:500}
+.check .cb{flex-shrink:0;width:26px;height:26px;border-radius:50%;margin-top:1px;
+  background:var(--glass);outline:1px solid var(--edge-line);outline-offset:-1px;display:grid;place-items:center}
+.check .cb svg{width:13px;height:13px;stroke:#E4E5F2;stroke-width:2.6;fill:none}
+
+/* рядки сторінок */
+.rows{display:flex;flex-direction:column;gap:10px}
+.row-p{border-radius:18px;transition:transform .45s var(--ease),background .45s var(--ease)}
+.row-p>.in{border-radius:17px;padding:22px 26px;display:flex;align-items:center;gap:22px}
+.row-p:hover{transform:translateX(6px);background:var(--edge-hover)}
+.row-p .idx{font-size:16px;color:var(--dim);min-width:30px}
+.row-p .nm{font-size:18px;font-weight:500;min-width:172px;letter-spacing:-.02em}
+.row-p .ds{font-size:16px;color:var(--text)}
+@media(max-width:780px){.row-p>.in{flex-direction:column;align-items:flex-start;gap:8px}.row-p .nm{min-width:0}}
+
+/* ПРОЦЕС — номери поза карткою + рейка */
+.proc{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:start}
+@media(max-width:980px){.proc{grid-template-columns:1fr;gap:40px}}
+.proc-head{position:sticky;top:120px}
+.proc-head h2{font-size:clamp(30px,3.4vw,44px);margin:22px 0 16px}
+.proc-head .btn{margin-top:26px}
+@media(max-width:980px){.proc-head{position:static}}
+.pstep{display:grid;grid-template-columns:96px 1fr;gap:24px;opacity:.34;transition:opacity .6s var(--ease)}
+.pstep.in-view{opacity:1}
+.pnum{position:relative;display:flex;flex-direction:column;align-items:center;padding-top:4px}
+.pnum .n{font-size:40px;font-weight:500;letter-spacing:-.05em;color:var(--ink);line-height:1}
+.pnum .rail{flex:1;width:1px;margin-top:16px;background:linear-gradient(180deg,rgba(237,237,237,.3),rgba(237,237,237,.02));min-height:40px}
+.pstep:last-child .rail{display:none}
+.pstep .pane{margin-bottom:28px}
+.pstep .in{padding:30px}
+.pstep h3{font-size:22px;margin:20px 0 10px}
+.pstep p{font-size:16px}
+.pill-sm{display:inline-flex;align-items:center;gap:9px;padding:7px 15px;border-radius:9999px;
+  background:var(--glass);outline:1px solid var(--edge-line);outline-offset:-1px;font-size:16px;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.pill-sm .dot{width:8px;height:8px;border-radius:50%;background:#E4E5F2;box-shadow:0 0 0 3px rgba(228,229,242,.16)}
+@media(max-width:560px){.pstep{grid-template-columns:62px 1fr;gap:16px}.pnum .n{font-size:30px}}
+
+/* КОШТОРИС */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
+@media(max-width:1000px){.price-grid{grid-template-columns:1fr;max-width:500px;margin:0 auto}}
+.price{transition:transform .5s var(--ease),background .5s var(--ease)}
+.price:hover{transform:translateY(-4px);background:var(--edge-hover)}
+.price>.in{padding:32px 30px 36px;display:flex;flex-direction:column;height:100%}
+.price.featured{background:linear-gradient(180deg,rgba(237,237,237,.55),rgba(237,237,237,.1) 45%,rgba(237,237,237,.07))}
+.price.featured>.in{background:radial-gradient(ellipse 120% 70% at 50% -10%,rgba(228,229,242,.13),transparent 62%),#050505}
+.price-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:26px}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--light);color:#0A0A0A;
+  font-size:16px;font-weight:500;padding:7px 15px;border-radius:9999px;white-space:nowrap;box-shadow:var(--sh-btn)}
+.badge svg{width:14px;height:14px;fill:#0A0A0A}
+.tier{font-size:23px;font-weight:500;letter-spacing:-.02em;margin-bottom:12px}
+.amount-row{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+.amount{font-size:50px;font-weight:500;letter-spacing:-.045em;line-height:1}
+.amount-suf{font-size:16px;color:var(--dim)}
+.price .sub{font-size:16px;color:var(--text);margin-bottom:26px;min-height:52px}
+.price .btn{justify-content:center;margin-bottom:28px}
+.feats{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:auto}
+.feats li{font-size:16px;color:var(--text);display:flex;gap:12px;line-height:1.55;align-items:flex-start}
+.feats li .cb{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--glass);
+  outline:1px solid var(--edge-line);outline-offset:-1px;display:grid;place-items:center;margin-top:1px}
+.feats li .cb svg{width:12px;height:12px;stroke:#E4E5F2;stroke-width:2.6;fill:none}
+.terms{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
+@media(max-width:880px){.terms{grid-template-columns:repeat(2,1fr)}}
+.term .in{padding:26px;text-align:center}
+.term .k{font-size:26px;font-weight:500;letter-spacing:-.03em;margin-bottom:8px}
+.term .v{font-size:16px;color:var(--dim)}
+
+/* FAQ */
+.faq{max-width:840px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.q{border-radius:20px;transition:background .5s var(--ease)}
+.q>.in{border-radius:19px;overflow:hidden;transition:background .5s var(--ease)}
+.q.open{background:var(--edge-hover)}
+.q.open>.in{background:radial-gradient(ellipse 130% 80% at 50% -14%,rgba(228,229,242,.1),transparent 62%),#050505}
+.q button{width:100%;background:none;border:none;color:var(--ink);text-align:left;cursor:pointer;
+  padding:24px 26px;font-size:18px;font-weight:500;letter-spacing:-.02em;
+  display:flex;justify-content:space-between;align-items:center;gap:18px}
+.q .cv{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--glass);
+  outline:1px solid var(--edge-line);outline-offset:-1px;display:grid;place-items:center;transition:transform .45s var(--ease)}
+.q .cv svg{width:14px;height:14px;stroke:#E4E5F2;stroke-width:2;fill:none}
+.q.open .cv{transform:rotate(180deg)}
+.q .a{max-height:0;overflow:hidden;transition:max-height .55s var(--ease)}
+.q .a .inner{padding:0 26px 26px;border-top:1px solid var(--edge-soft);margin:0 26px;padding-left:0;padding-right:0}
+.q .a p{font-size:16px;padding-top:18px}
+
+/* фінал */
+.final .in{padding:76px 40px;text-align:center;position:relative;overflow:hidden}
+.final h2{font-size:clamp(32px,4.2vw,52px);margin:24px 0 20px}
+.final p{max-width:560px;margin:0 auto;font-size:18px}
+.final .glow{width:780px;height:330px;top:-160px;left:50%;transform:translateX(-50%);opacity:.09}
+.contacts{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin-top:44px;font-size:16px;color:var(--text)}
+.contacts a{transition:color .3s var(--ease)}
+.contacts a:hover{color:#fff}
+footer{padding:44px 0 60px;margin-top:80px;position:relative}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--edge-soft)}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:16px;color:var(--dim)}
+
+/* поява */
+.rv{opacity:0;transform:translateY(30px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in-view{opacity:1;transform:none}
+.wrapW{display:inline-block;overflow:hidden;vertical-align:bottom}
+.wrapW .w{display:inline-block;opacity:0;transform:translateY(100%);animation:up .95s var(--ease) forwards}
+@keyframes up{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.pstep{opacity:1;transform:none}.wrapW .w{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="brand"><span class="mark">R</span> RtemDesign Studio</div>
+    <nav class="nav-links">
+      <a href="#request">Запит</a><a href="#services">Напрями</a><a href="#structure">Структура</a>
+      <a href="#brand">Брендбук</a><a href="#process">Процес</a><a href="#pricing">Кошторис</a>
+    </nav>
+    <a href="#pricing" class="btn btn-light btn-anim">Кошторис <span class="chip">↗</span></a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="grid-bg"></div><div class="glow a"></div><div class="glow b"></div>
+  <div class="wrap hero-in">
+    <span class="pill"><span class="dot"></span>Бізнес-пропозиція · Жовтень 2026</span>
+    <h1 class="grad" id="heroTitle">Сайт і бренд, яким довіряють у найделікатніших питаннях</h1>
+    <p class="lead">Розробка сайту та брендбуку для експерта з поліграфу, кризових переговорів і медіації. Одна структура, що працює на три напрями одночасно: послуги, навчання і репутацію.</p>
+    <div class="cta-row">
+      <a href="#pricing" class="btn btn-light btn-anim">Переглянути кошторис <span class="chip">↗</span></a>
+      <a href="#structure" class="btn btn-glass btn-anim">Структура сайту <span class="chip">↗</span></a>
+    </div>
+    <div class="pane wide hero-visual rv"><div class="in">
+      <div class="rings"><div class="ring"></div><div class="ring"></div><div class="ring"></div></div>
+      <div class="hv"><div class="n grad">9</div><div class="l">сторінок · 4 напрями · 1 система</div></div>
+      <svg class="pulse" viewBox="0 0 900 90" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,45 L190,45 L206,45 L218,16 L230,74 L242,32 L254,45 L430,45 L446,45 L458,22 L470,68 L482,36 L494,45 L900,45"
+          stroke="rgba(228,229,242,.55)" stroke-width="1.5" fill="none" stroke-linecap="round">
+          <animate attributeName="stroke-dasharray" values="0 2000;2000 0" dur="4.5s" repeatCount="indefinite"/></path>
+      </svg>
+    </div></div>
+    <div class="hero-meta">RTEM Design Studio · rtemdesign.com · Вінниця, Україна</div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq-sec">
+  <div class="mq-label">Досвід на проєктах для</div>
+  <div class="mq"><div class="mq-track" id="mq">
+    <span>L'Oréal</span><span>NYX Professional</span><span>La Roche-Posay</span><span>Vichy</span><span>Abbott</span><span>Lactalis</span><span>NovaPay</span><span>Robota.ua</span><span>Proxima</span><span>PLAYTHRIV</span>
+  </div></div>
+</div>
+
+<!-- ЗАПИТ: картки з медіа -->
+<section id="request">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="pill"><span class="dot"></span>Ваш запит</span>
+      <h2 class="grad">Експертиза є. Онлайн її поки не видно</h2>
+      <p>Три напрями, кожен зі своєю аудиторією, живуть у різних каналах і не підсилюють один одного.</p>
+    </div>
+    <div class="grid g3">
+      <article class="pane vcard rv"><div class="in">
+        <div class="media">
+          <svg viewBox="0 0 220 220" aria-hidden="true">
+            <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#F2F2F7"/><stop offset="1" stop-color="#55575E"/></linearGradient></defs>
+            <circle cx="110" cy="110" r="78" fill="none" stroke="url(#g1)" stroke-width="2" opacity=".5"/>
+            <circle cx="110" cy="110" r="58" fill="none" stroke="url(#g1)" stroke-width="1" opacity=".3"/>
+            <path d="M110 48l48 20v38c0 30-20 52-48 62-28-10-48-32-48-62V68z" fill="none" stroke="url(#g1)" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M88 112l16 16 30-34" fill="none" stroke="#F2F2F7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="meta"><h3>Репутацію нічим підтвердити</h3>
+        <p>Членство в асоціації, сертифікація, участь у переговорних процесах — усе це є, але клієнт перевіряє вас за 10 секунд і не знаходить підтверджень.</p></div>
+      </div></article>
+
+      <article class="pane vcard rv"><div class="in">
+        <div class="media">
+          <svg viewBox="0 0 220 220" aria-hidden="true">
+            <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#F2F2F7"/><stop offset="1" stop-color="#4A4C53"/></linearGradient></defs>
+            <path d="M34 110h40" stroke="url(#g2)" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="88" cy="110" r="11" fill="none" stroke="#F2F2F7" stroke-width="3"/>
+            <path d="M100 110h28l24-46h34M100 110h28l24 46h34M100 110h52" stroke="url(#g2)" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <circle cx="190" cy="64" r="7" fill="#F2F2F7" opacity=".9"/>
+            <circle cx="190" cy="110" r="7" fill="#F2F2F7" opacity=".55"/>
+            <circle cx="190" cy="156" r="7" fill="#F2F2F7" opacity=".3"/>
+          </svg>
+        </div>
+        <div class="meta"><h3>Три бізнес-моделі в одному місці</h3>
+        <p>Послуги, навчання і статус продаються по-різному. Без окремих посадкових найприбутковіший напрям — навчання — губиться між усім іншим.</p></div>
+      </div></article>
+
+      <article class="pane vcard rv"><div class="in">
+        <div class="media">
+          <svg viewBox="0 0 220 220" aria-hidden="true">
+            <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#4A4C53"/><stop offset=".5" stop-color="#F2F2F7"/><stop offset="1" stop-color="#4A4C53"/></linearGradient></defs>
+            <path d="M18 110h38l12-30 14 62 12-46 10 24 12-40 14 52 12-26 10 14h48"
+              fill="none" stroke="url(#g3)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="92" y="62" width="44" height="96" rx="12" fill="none" stroke="#F2F2F7" stroke-width="2" opacity=".45"/>
+          </svg>
+        </div>
+        <div class="meta"><h3>Делікатна аудиторія</h3>
+        <p>Сімейні питання, бізнес-розслідування, військові справи. Тон і структура сайту вирішують, напишуть вам чи закриють вкладку.</p></div>
+      </div></article>
+    </div>
+  </div>
+</section>
+
+<!-- НАПРЯМИ: картки з іконкою, текст знизу -->
+<section id="services" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="pill"><span class="dot"></span>Напрями</span>
+      <h2 class="grad">Чотири послуги — чотири окремі входи</h2>
+      <p>Кожен напрям отримує свою сторінку, свою цільову дію і свій тон комунікації.</p>
+    </div>
+    <div class="grid g2">
+      <article class="pane icard rv"><div class="in"><span class="num">01</span>
+        <div class="ibox"><svg viewBox="0 0 24 24"><path d="M2 12h4l2-7 4 14 3-9 2 2h5"/></svg></div>
+        <div class="meta"><h3>Поліграф</h3>
+        <p>Методика, як проходить дослідження, що таке висновок спеціаліста та його юридичний статус, формати для бізнесу й приватних осіб, прозорий прайс.</p></div>
+      </div></article>
+      <article class="pane icard rv"><div class="in"><span class="num">02</span>
+        <div class="ibox"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg></div>
+        <div class="meta"><h3>Кризові переговори</h3>
+        <p>Участь у переговорних процесах, членство в асоціації кризових переговорів. Підблоки: бізнес, сімейні питання, дитяча участь у переговорах, військові питання.</p></div>
+      </div></article>
+      <article class="pane icard rv"><div class="in"><span class="num">03</span>
+        <div class="ibox"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 7h14M7 7l-4 7h8L7 7zM17 7l-4 7h8l-4-7z"/></svg></div>
+        <div class="meta"><h3>Медіація</h3>
+        <p>Досудове врегулювання спорів: етапи процедури, коли медіація дешевша за суд, робота з адвокатами як партнерський канал.</p></div>
+      </div></article>
+      <article class="pane icard rv"><div class="in"><span class="num">04</span>
+        <div class="ibox"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+        <div class="meta"><h3>OSINT</h3>
+        <p>Перевірка контрагентів і кандидатів за відкритими джерелами. Найлегший перший продаж для бізнесу — з нього починається довгострокова співпраця.</p></div>
+      </div></article>
+    </div>
+  </div>
+</section>
+
+<!-- СТРУКТУРА -->
+<section id="structure">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="pill"><span class="dot"></span>Структура сайту</span>
+      <h2 class="grad">9 сторінок, що ведуть до заявки</h2>
+      <p>Чотири сторінки з вашого запиту розгорнуті в повну архітектуру: кожен напрям отримує власну посадкову, блог живить органічний трафік.</p>
+    </div>
+    <div class="rows">
+      <div class="pane row-p rv"><div class="in"><span class="idx">01</span><span class="nm">Головна</span><span class="ds">Позиціонування, акредитація, 4 напрями, доказовість, головний CTA</span></div></div>
+      <div class="pane row-p rv"><div class="in"><span class="idx">02</span><span class="nm">Про нас</span><span class="ds">Експертиза, членство в асоціаціях, сертифікати, перехід на офіційний ресурс українського поліграфу</span></div></div>
+      <div class="pane row-p rv"><div class="in"><span class="idx">03</span><span class="nm">Поліграф</span><span class="ds">Методика, формати досліджень, висновок спеціаліста, ціни</span></div></div>
+      <div class="pane row-p rv"><div class="in"><span class="idx">04</span><span class="nm">Переговори</span><span class="ds">Кризові переговори + бізнес, сімейні, дитяча участь, військові питання</span></div></div>
+      <div class="pane row-p rv"><div class="in"><span class="idx">05</span><span class="nm">Медіація</span><span class="ds">Досудове врегулювання спорів, етапи, партнерство з юристами</span></div></div>
+      <div class="pane row-p rv"><div class="in"><span class="idx">06</span><span class="nm">OSINT</span><span class="ds">Перевірка за відкритими джерелами, тарифи, межі законності</span></div></div>
+      <div class="pane row-p rv"><div class="in"><span class="idx">07</span><span class="nm">Навчання</span><span class="ds">Програми, формат, викладачі, розклад, сертифікат, форма запису — окрема воронка</span></div></div>
+      <div class="pane row-p rv"><div class="in"><span class="idx">08</span><span class="nm">Блог</span><span class="ds">CMS-колекція, SEO-двигун проєкту: статті під пошукові запити клієнтів</span></div></div>
+      <div class="pane row-p rv"><div class="in"><span class="idx">09</span><span class="nm">Контакти</span><span class="ds">Форма заявки, захищений канал звʼязку, можливість анонімного звернення</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ВЕЛИКИЙ БЛОК: що вирішує сайт -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="pane wide feature rv"><div class="in">
+      <div class="strip">
+        <svg viewBox="0 0 520 200" aria-hidden="true">
+          <defs><linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#F2F2F7"/><stop offset="1" stop-color="#404248"/></linearGradient></defs>
+          <rect x="30" y="38" width="150" height="124" rx="16" fill="none" stroke="url(#g4)" stroke-width="2"/>
+          <rect x="52" y="62" width="86" height="7" rx="3.5" fill="#F2F2F7" opacity=".85"/>
+          <rect x="52" y="82" width="106" height="6" rx="3" fill="#F2F2F7" opacity=".35"/>
+          <rect x="52" y="98" width="70" height="6" rx="3" fill="#F2F2F7" opacity=".35"/>
+          <rect x="52" y="124" width="60" height="22" rx="11" fill="#F2F2F7" opacity=".9"/>
+          <path d="M196 100h58" stroke="url(#g4)" stroke-width="2" stroke-dasharray="6 7"/>
+          <rect x="268" y="38" width="100" height="124" rx="16" fill="none" stroke="url(#g4)" stroke-width="2" opacity=".75"/>
+          <rect x="286" y="60" width="64" height="6" rx="3" fill="#F2F2F7" opacity=".5"/>
+          <rect x="286" y="76" width="44" height="6" rx="3" fill="#F2F2F7" opacity=".25"/>
+          <circle cx="318" cy="124" r="20" fill="none" stroke="#F2F2F7" stroke-width="2" opacity=".6"/>
+          <path d="M310 124l6 6 12-13" stroke="#F2F2F7" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M384 100h46" stroke="url(#g4)" stroke-width="2" stroke-dasharray="6 7"/>
+          <rect x="444" y="62" width="56" height="76" rx="14" fill="none" stroke="url(#g4)" stroke-width="2" opacity=".55"/>
+          <path d="M458 118l12-16 10 12 10-20" stroke="#F2F2F7" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="body">
+        <span class="pill"><span class="dot"></span>Що вирішує сайт</span>
+        <h2 class="grad">Довіра стає вимірюваною</h2>
+        <p style="max-width:620px">Людина приходить із болем і недовірою. Сайт має за кілька секунд показати, що ви легальні, компетентні й безпечні — і тільки потім продавати.</p>
+        <div class="cols">
+          <div class="check"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Акредитація, сертифікати й участь у переговорних процесах — на першому екрані</div>
+          <div class="check"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Конфіденційність описана явно: NDA, хто бачить висновок, як зберігаються дані</div>
+          <div class="check"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Юридичні рамки прописані чесно — це знімає страх і відсіює нерелевантні запити</div>
+          <div class="check"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Навчання отримує власну воронку з записом, а не абзац на головній</div>
+          <div class="check"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Блог під пошукові запити приводить клієнтів без реклами</div>
+          <div class="check"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>OSINT працює як недорогий перший продаж для бізнес-сегмента</div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<!-- БРЕНДБУК -->
+<section id="brand" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="pill"><span class="dot"></span>Брендбук</span>
+      <h2 class="grad">У вашій ніші документ — це теж продукт</h2>
+      <p>Клієнт отримує висновок спеціаліста, слухач — сертифікат, партнер — презентацію. Усі вони мають виглядати однаково впевнено.</p>
+    </div>
+    <div class="grid g3">
+      <article class="pane icard rv"><div class="in">
+        <div class="ibox"><svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 1-4.5 4.3 1 6.2L12 17l-5.5 2.5 1-6.2L3 9l6-1z"/></svg></div>
+        <div class="meta"><h3>Айдентика</h3><p>Логотип (основний, компактний, монохром), правила використання, охоронне поле, заборонені варіанти.</p></div>
+      </div></article>
+      <article class="pane icard rv"><div class="in">
+        <div class="ibox"><svg viewBox="0 0 24 24"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg></div>
+        <div class="meta"><h3>Візуальна система</h3><p>Палітра, типографіка, модульна сітка, іконографіка, фотостиль, правила композиції.</p></div>
+      </div></article>
+      <article class="pane icard rv"><div class="in">
+        <div class="ibox"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 15h6"/></svg></div>
+        <div class="meta"><h3>Шаблони документів</h3><p>Бланк висновку спеціаліста, договір і NDA, сертифікат слухача, презентація для корпоративних клієнтів.</p></div>
+      </div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ПРОЦЕС -->
+<section id="process">
+  <div class="wrap proc">
+    <aside class="proc-head rv">
+      <span class="pill"><span class="dot"></span>Процес</span>
+      <h2 class="grad">Пʼять етапів з погодженням на кожному</h2>
+      <p>Ви бачите результат на кожному кроці й погоджуєте його до того, як ми йдемо далі. Жодних «покажемо все в кінці».</p>
+      <a href="#pricing" class="btn btn-light btn-anim">Переглянути кошторис <span class="chip">↗</span></a>
+    </aside>
+    <div class="proc-list">
+      <div class="pstep">
+        <div class="pnum"><span class="n">01</span><span class="rail"></span></div>
+        <div class="pane"><div class="in">
+          <span class="pill-sm"><span class="dot"></span>Тиждень 1</span>
+          <h3>Дослідження і бриф</h3>
+          <p>Аналізуємо нішу, конкурентів і пошукові запити ваших клієнтів. Фіксуємо акредитації, сертифікати та юридичні рамки, які треба показати. Формуємо цілі сайту за SMART.</p>
+        </div></div>
+      </div>
+      <div class="pstep">
+        <div class="pnum"><span class="n">02</span><span class="rail"></span></div>
+        <div class="pane"><div class="in">
+          <span class="pill-sm"><span class="dot"></span>Тиждень 2</span>
+          <h3>Структура і прототип</h3>
+          <p>Карта сайту, сценарії для кожної аудиторії — бізнес, приватні особи, юристи, майбутні слухачі. Прототипи ключових сторінок і тексти під конверсію.</p>
+        </div></div>
+      </div>
+      <div class="pstep">
+        <div class="pnum"><span class="n">03</span><span class="rail"></span></div>
+        <div class="pane"><div class="in">
+          <span class="pill-sm"><span class="dot"></span>Тижні 3–5</span>
+          <h3>Дизайн-концепт і брендбук</h3>
+          <p>Концепт головної сторінки, затвердження напряму, далі — усі внутрішні сторінки та мобільна адаптація. Паралельно збираємо айдентику й шаблони документів.</p>
+        </div></div>
+      </div>
+      <div class="pstep">
+        <div class="pnum"><span class="n">04</span><span class="rail"></span></div>
+        <div class="pane"><div class="in">
+          <span class="pill-sm"><span class="dot"></span>Тижні 6–7</span>
+          <h3>Верстка і наповнення</h3>
+          <p>Адаптивна верстка, CMS для блогу, форми заявок, захищений канал звʼязку, базова SEO-оптимізація та метадані.</p>
+        </div></div>
+      </div>
+      <div class="pstep">
+        <div class="pnum"><span class="n">05</span><span class="rail"></span></div>
+        <div class="pane"><div class="in">
+          <span class="pill-sm"><span class="dot"></span>Тиждень 8</span>
+          <h3>Запуск і аналітика</h3>
+          <p>Публікація, підключення аналітики, навчання роботі з сайтом, передача матеріалів. Далі — три місяці гарантійної підтримки.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- КОШТОРИС -->
+<section id="pricing">
+  <div class="grid-bg" style="mask-image:radial-gradient(ellipse 70% 70% at 50% 35%,#000 8%,transparent 72%);-webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 35%,#000 8%,transparent 72%)"></div>
+  <div class="wrap" style="position:relative;z-index:2">
+    <div class="sec-head rv">
+      <span class="pill"><span class="dot"></span>Кошторис</span>
+      <h2 class="grad">Інвестиція в систему, а не в картинку</h2>
+      <p>Два складники, які можна взяти окремо. Разом вони дають єдину систему й економлять час на погодженнях.</p>
+    </div>
+    <div class="price-grid">
+      <div class="pane price rv"><div class="in">
+        <div class="price-top">
+          <div class="ibox"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 22h8"/></svg></div>
+        </div>
+        <div class="tier">Сайт</div>
+        <div class="amount-row"><span class="amount grad">$1 800</span><span class="amount-suf">під ключ</span></div>
+        <div class="sub">Повна розробка: від дослідження і структури до запуску й аналітики.</div>
+        <a href="#contact" class="btn btn-glass btn-anim">Обговорити <span class="chip">↗</span></a>
+        <ul class="feats">
+          <li><span class="cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>9 сторінок + мобільна адаптація</li>
+          <li><span class="cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>UX-структура і прототипи</li>
+          <li><span class="cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Блог на CMS</li>
+          <li><span class="cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Форми заявок і захищений канал</li>
+          <li><span class="cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Базова SEO-оптимізація та аналітика</li>
+        </ul>
+      </div></div>
+
+      <div class="pane price featured rv"><div class="in">
+        <div class="price-top">
+          <div class="ibox"><svg viewBox="0 0 24 24"><path d="M5 19l3-10 4 5 3-7 4 12z"/><circle cx="12" cy="4" r="1.6"/></svg></div>
+          <span class="badge"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>Рекомендовано</span>
+        </div>
+        <div class="tier">Сайт + брендбук</div>
+        <div class="amount-row"><span class="amount grad">$2 200</span><span class="amount-suf">комплекс</span></div>
+        <div class="sub">Єдина система: сайт, айдентика і шаблони документів в одному циклі.</div>
+        <a href="#contact" class="btn btn-light btn-anim">Почати проєкт <span class="chip">↗</span></a>
+        <ul class="feats">
+          <li><span class="cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Усе з пакета «Сайт»</li>
+          <li><span class="cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Усе з пакета «Брендбук»</li>
+          <li><span class="cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Наскрізна система сайт ↔ документи</li>
+          <li><span class="cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Один цикл погоджень замість двох</li>
+          <li><span class="cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>3 місяці гарантійної підтримки</li>
+        </ul>
+      </div></div>
+
+      <div class="pane price rv"><div class="in">
+        <div class="price-top">
+          <div class="ibox"><svg viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="13" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="14" r="2.5"/><path d="M12 22a10 10 0 110-20"/></svg></div>
+        </div>
+        <div class="tier">Брендбук</div>
+        <div class="amount-row"><span class="amount grad">$400</span><span class="amount-suf">окремо</span></div>
+        <div class="sub">Айдентика і носії, якими ви користуєтесь щодня.</div>
+        <a href="#contact" class="btn btn-glass btn-anim">Обговорити <span class="chip">↗</span></a>
+        <ul class="feats">
+          <li><span class="cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Логотип і правила використання</li>
+          <li><span class="cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Палітра, типографіка, сітка</li>
+          <li><span class="cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Іконографіка і фотостиль</li>
+          <li><span class="cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Бланк висновку, договір, NDA</li>
+          <li><span class="cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Сертифікат слухача і соцмережі</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="terms">
+      <div class="pane term rv"><div class="in"><div class="k grad">6–8 тижнів</div><div class="v">Термін розробки</div></div></div>
+      <div class="pane term rv"><div class="in"><div class="k grad">40 / 30 / 30</div><div class="v">Графік оплати</div></div></div>
+      <div class="pane term rv"><div class="in"><div class="k grad">3 місяці</div><div class="v">Гарантійна підтримка</div></div></div>
+      <div class="pane term rv"><div class="in"><div class="k grad">2 раунди</div><div class="v">Зведених правок</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="pill"><span class="dot"></span>Питання</span>
+      <h2 class="grad">Що зазвичай запитують</h2>
+    </div>
+    <div class="faq">
+      <div class="pane q rv"><div class="in">
+        <button aria-expanded="false">Чому 9 сторінок, а не 4 <span class="cv"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+        <div class="a"><div class="inner"><p>Чотири сторінки обслуговують одну аудиторію. У вас їх щонайменше чотири: бізнес, приватні клієнти, юристи й майбутні слухачі. Кожна приймає рішення по-різному, тому кожен напрям отримує власну посадкову з власною цільовою дією. Це також дає більше точок входу з пошуку.</p></div></div>
+      </div></div>
+      <div class="pane q rv"><div class="in">
+        <button aria-expanded="false">Чи можна почати лише з брендбуку <span class="cv"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+        <div class="a"><div class="inner"><p>Так, пакети незалежні. Але послідовність «брендбук → сайт» завжди дешевша за зворотну: якщо айдентика зʼявляється після запуску сайту, частину дизайну доводиться переробляти.</p></div></div>
+      </div></div>
+      <div class="pane q rv"><div class="in">
+        <button aria-expanded="false">Хто пише тексти <span class="cv"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+        <div class="a"><div class="inner"><p>Структуру, заголовки й сценарії сторінок готуємо ми — це частина UX. Фактуру за вашими напрямами (методики, формати досліджень, програми навчання) надаєте ви, ми доводимо її до фінального вигляду.</p></div></div>
+      </div></div>
+      <div class="pane q rv"><div class="in">
+        <button aria-expanded="false">Чи зможемо самі додавати статті в блог <span class="cv"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+        <div class="a"><div class="inner"><p>Так. Блог будується на CMS: додавання статті — це заповнення полів без участі розробника. Після запуску проводимо коротке навчання для вашої команди.</p></div></div>
+      </div></div>
+      <div class="pane q rv"><div class="in">
+        <button aria-expanded="false">Що відбувається після запуску <span class="cv"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+        <div class="a"><div class="inner"><p>Три місяці гарантійної підтримки: виправляємо технічні помилки, дивимось аналітику поведінки й коригуємо сторінки там, де люди не доходять до заявки.</p></div></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ФІНАЛ -->
+<section id="contact" style="padding-top:20px">
+  <div class="wrap">
+    <div class="pane wide final rv"><div class="in">
+      <div class="glow"></div>
+      <div style="position:relative;z-index:2">
+        <span class="pill"><span class="dot"></span>Наступний крок</span>
+        <h2 class="grad">Готові почати?</h2>
+        <p>Погоджуємо пакет, підписуємо договір і стартуємо з дослідження. Перший результат — структура сайту — у вас уже на другому тижні.</p>
+        <div class="cta-row">
+          <a href="mailto:rtem88@gmail.com" class="btn btn-light btn-anim">Написати на пошту <span class="chip">↗</span></a>
+          <a href="https://t.me/ArtemKab88" target="_blank" rel="noopener" class="btn btn-glass btn-anim">Telegram <span class="chip">↗</span></a>
+        </div>
+        <div class="contacts">
+          <a href="mailto:rtem88@gmail.com">rtem88@gmail.com</a>
+          <a href="https://rtemdesign.com" target="_blank" rel="noopener">rtemdesign.com</a>
+          <a href="https://instagram.com/rtem_design" target="_blank" rel="noopener">@rtem_design</a>
+        </div>
+      </div>
+    </div></div>
+  </div>
+  <footer><div class="wrap foot">
+    <span>© 2026 RtemDesign Studio</span>
+    <span>Бізнес-пропозиція · дійсна 14 днів з дати надсилання</span>
+  </div></footer>
+</section>
+
+<script>
+// hero: послівна поява
+(()=>{const h=document.getElementById('heroTitle');
+  h.innerHTML=h.textContent.trim().split(/\s+/).map((w,i)=>`<span class="wrapW"><span class="w" style="animation-delay:${.14+i*.055}s">${w}</span></span>`).join(' ');})();
+
+// підпис кнопки одним вузлом — кернінг не рветься
+document.querySelectorAll('.btn-anim').forEach(btn=>{
+  [...btn.childNodes].forEach(node=>{
+    if(node.nodeType!==3||!node.textContent.trim())return;
+    const s=document.createElement('span');
+    s.className='label';s.textContent=node.textContent.trim();
+    node.replaceWith(s);
+  });
+});
+
+// поява + фокус етапів
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const sibs=[...(e.target.parentElement?.children||[])].filter(n=>n.classList.contains('rv'));
+    const i=sibs.indexOf(e.target);
+    if(i>0)e.target.style.transitionDelay=(i*.075)+'s';
+    e.target.classList.add('in-view');
+    io.unobserve(e.target);
+  });
+},{threshold:.1,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.rv,.pstep').forEach(el=>io.observe(el));
+
+// підсвітка за курсором
+document.querySelectorAll('.icard').forEach(c=>{
+  const inner=c.querySelector('.in');
+  c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();
+    inner.style.setProperty('--mx',(e.clientX-r.left)+'px');
+    inner.style.setProperty('--my',(e.clientY-r.top)+'px');});
+});
+
+// акордеон
+document.querySelectorAll('.q').forEach(q=>{
+  const btn=q.querySelector('button'),a=q.querySelector('.a');
+  btn.addEventListener('click',()=>{
+    const open=q.classList.contains('open');
+    document.querySelectorAll('.q.open').forEach(o=>{
+      o.classList.remove('open');o.querySelector('.a').style.maxHeight=null;
+      o.querySelector('button').setAttribute('aria-expanded','false');});
+    if(!open){q.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';btn.setAttribute('aria-expanded','true');}
+  });
+});
+
+// marquee
+(()=>{const t=document.getElementById('mq');t.innerHTML+=t.innerHTML})();
+</script>
+</body>
+</html>
